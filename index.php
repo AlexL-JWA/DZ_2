@@ -1,49 +1,17 @@
 <?php
 
-$numbers   = [ 82, 66, 82, 77, 49, 40, 71, 33, 20, 43, ];
-$str_array = [
-	'Создать',
-	'массив',
-	'строк.',
-	'Написать',
-	'функцию',
-	'поиска',
-	'самой',
-	'длинной',
-	'строки',
-	'по',
-	'переданному',
-	'массиву.',
-];
-
 /**
- * Max Numbers.
+ * Symbol count.
  *
- * @param array $numbers Numbers.
+ * @param string $str String
  *
  * @return void
  */
-function max_number( array $numbers ): void {
-	rsort( $numbers );
+function symbol_use( string $str ): void {
+	$string = preg_replace( '/[^a-zа-яA-Zа-я]/iu', '', $str );
 
-	echo $numbers[0] . PHP_EOL;
+	echo $string . PHP_EOL;
+	echo strlen( $string ) . PHP_EOL;
 }
 
-max_number( $numbers );
-
-/**
- * Max length string.
- *
- * @param array $str_array Array Strings.
- *
- * @return void
- */
-function max_string( array $str_array ): void {
-	$max_string_in_array = array_reduce( $str_array, function ( $carry, $item ) {
-		return mb_strlen( $carry, 'utf-8' ) < mb_strlen( $item, 'utf-8' ) ? $item : $carry;
-	}, '' );
-
-	echo $max_string_in_array . PHP_EOL;
-}
-
-max_string( $str_array );
+symbol_use( 'djhask678.-34  !322выфпапа[216234' );
